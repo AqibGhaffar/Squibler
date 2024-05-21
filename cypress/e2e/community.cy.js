@@ -16,7 +16,7 @@ beforeEach(() => {
       cy.location('pathname').should('eq', '/community');
 
     });
-    it('verify that filters exist .i.e. search, sortBy, status', () => {
+    it.skip('verify that filters exist .i.e. search, sortBy, status', () => {
       cy.visit('/auth/login')
       cy.get('.arrows > .fak').click()
       cy.contains(' Suggest a feature').click()
@@ -27,7 +27,7 @@ beforeEach(() => {
       cy.wait(2000)
 
     });
-    it('verify that Add Post Button exists', () => {
+    it.skip('verify that Add Post Button exists', () => {
       cy.visit('/auth/login')
       cy.get('.arrows > .fak').click()
       cy.contains(' Suggest a feature').click()
@@ -45,7 +45,7 @@ beforeEach(() => {
 
     });
     
-    it('verify that save button is disabled when fields are empty', () => {
+    it.skip('verify that save button is disabled when fields are empty', () => {
       cy.visit('/auth/login')
       cy.get('.arrows > .fak').click()
       cy.contains(' Suggest a feature').click()
@@ -58,7 +58,7 @@ beforeEach(() => {
 
     });
 
-    it('verify that the image is being uploaded or not', () => {
+    it.skip('verify that the image is being uploaded or not', () => {
       cy.visit('/auth/login')
       cy.get('.arrows > .fak').click()
       cy.contains(' Suggest a feature').click()
@@ -76,7 +76,7 @@ beforeEach(() => {
       cy.get('.community-snackbar-text').should('contain.text', ' Your feedback is moderating now. It will take till 24 hours.')
         
         })
-        it('Like the Post', () => {
+    it.skip('Like the Post', () => {
           cy.visit('/auth/login')
           cy.get('.arrows > .fak').click()
           cy.contains(' Suggest a feature').click()

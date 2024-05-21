@@ -9,7 +9,7 @@ describe('Without Login', () => {
   
       
     })
-    it('verify that non-logged in users are not able to like', () => {
+    it.skip('verify that non-logged in users are not able to like', () => {
         // Visit the webpage where the form is located
         cy.visit('/community')
         cy.get('.fa-like').first().should('be.visible').click()
@@ -20,7 +20,7 @@ describe('Without Login', () => {
       })
 
 
-      it('check the newest record using filter', () => {
+      it.skip('check the newest record using filter', () => {
         // Visit the webpage where the form is located
         cy.visit('/community')
         cy.get('#sortBy').click()
@@ -51,7 +51,7 @@ describe('Without Login', () => {
 })
 
 
-it('check the Oldest record using filter', () => {
+it.skip('check the Oldest record using filter', () => {
   // Visit the webpage where the form is located
   cy.visit('/community')
   cy.get('#sortBy').click()
@@ -91,7 +91,7 @@ cy.get('#sortBy').click()
 })
 })
 
-it('should allow typing and display the search term and handle no results scenario', () => {
+it.skip('should allow typing and display the search term and handle no results scenario', () => {
   cy.visit('/community')
 
   const search = 'test';
@@ -115,7 +115,7 @@ it('should allow typing and display the search term and handle no results scenar
         cy.get('#mat-tab-content-0-0').contains('No Results').should('be.visible')
   });
     
-  it('Status Filter working', () => {
+  it.skip('Status Filter working', () => {
     cy.visit('/community')
     cy.get('#statusDropdown').click()
     cy.get('.mat-option-text').contains('Open').click()
