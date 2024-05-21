@@ -20,19 +20,20 @@ jobs:
 
     - name: Run Cypress tests
       run: npx cypress run
-
-name: slack_github_action
-on: [push]
-jobs:
-  slack_notifier:
+      
+ slack_notifier:
     runs-on: ubuntu-latest
+    needs: test
     steps:
-      - name: Send notification on Slack using Webhooks
-        uses: slackapi/slack-github-action@v1.24.0
-        with:
-          payload: |
-            {
-            "text": "Git push done in the repo , Squibler "
-            }
+    - name: Send notification on Slack using Webhooks
+      uses: slackapi/slack-github-action@v1.24.0
+      with:
+        payload: |
+          {
+            "text": "Git push done in the repo, Squibler"
+          }
+      env:     
+
+
         env:
           SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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}
