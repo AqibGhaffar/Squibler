@@ -3,9 +3,10 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
+    specPattern: "./cypress/e2e/**/*.cy.{js,jsx,ts,tsx}",
     experimentalStudio: true,
     pageLoadTimeout: 90000,
-    DEV_URL:"https://dev-dot-sqiblify.wl.r.appspot.com",
+    baseUrl:"https://dev-dot-sqiblify.wl.r.appspot.com/",
     //STAGE_URL:"https://stage-dot-sqiblify.wl.r.appspot.com/",
     //PROD_URL:"https://squibler.io/",
 
