@@ -5,14 +5,14 @@ module.exports = defineConfig({
   e2e: {
     experimentalStudio: true,
     pageLoadTimeout: 90000,
-    //DEV_URL:"https://dev-dot-sqiblify.wl.r.appspot.com/",
+    DEV_URL:"https://dev-dot-sqiblify.wl.r.appspot.com",
     //STAGE_URL:"https://stage-dot-sqiblify.wl.r.appspot.com/",
     //PROD_URL:"https://squibler.io/",
 
 
     //baseUrl: "https://www.squibler.io",
     //baseUrl: "http://localhost:4200/auth/login",
-    baseUrl: "http://localhost:4200",
+    //baseUrl: "http://localhost:4200",
     viewportWidth: 1000,
     viewportHeight: 660,
 
