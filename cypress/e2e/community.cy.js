@@ -60,7 +60,7 @@ beforeEach(() => {
 
     it.skip('verify that the image is being uploaded or not', () => {
       cy.visit('/auth/login')
-      cy.get('.arrows > .fak').click()
+      cy.get('.arrows > .fak').click() 
       cy.contains(' Suggest a feature').click()
       cy.location('pathname').should('eq', '/community');
       cy.get('.community-section-filters-button-text').should('be.visible').and('not.be.disabled').click()
