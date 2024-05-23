@@ -7,21 +7,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Run Cypress tests
-      run: npx cypress run
+      - name: Run Cypress tests
+        run: npx cypress run
 
- - name: Slack Notification
+      - name: Slack Notification
         if: always()
         uses: rtCamp/action-slack-notify@v2
         env:
@@ -35,12 +35,12 @@ jobs:
   #   runs-on: ubuntu-latest
   #   needs: test
   #   steps:
-  #   - name: Send notification on Slack using Webhooks
-  #     uses: slackapi/slack-github-action@v1.24.0
-  #     with:
-  #       payload: |
-  #         {
-  #           "text": "Git push done in the repo, Squibler"   
-  #         }
-  #     env:
-  #       SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
+  #     - name: Send notification on Slack using Webhooks
+  #       uses: slackapi/slack-github-action@v1.24.0
+  #       with:
+  #         payload: |
+  #           {
+  #             "text": "Git push done in the repo, Squibler"   
+  #           }
+  #       env:
+  #         SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
