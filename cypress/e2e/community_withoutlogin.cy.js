@@ -7,7 +7,6 @@ describe('Without Login', () => {
       cy.location('pathname').should('eq', '/auth/login')
       cy.get('h1').contains('Log in');
   
-      
     })
     it.skip('verify that non-logged in users are not able to like', () => {
         // Visit the webpage where the form is located
