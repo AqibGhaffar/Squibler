@@ -33,4 +33,4 @@ jobs:
             "text": "Git push done in the repo, Squibler"   
           }
       env:
-        SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
+        SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
