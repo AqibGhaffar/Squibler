@@ -21,15 +21,26 @@ jobs:
       - name: Run Cypress tests
         run: npx cypress run
 
-      - name: Slack Notification
-        if: always()
+      - name: Slack Notification (Success)
+        if: success()
         uses: rtCamp/action-slack-notify@v2
         env:
-          SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
+          SLACK_COLOR: 'good' # Green color for success
           SLACK_ICON: https://imgur.com/kdD7Ifu
-          SLACK_MESSAGE: 'Test Automation Report https://github.com/AqibGhaffar/Squibler/actions/runs/${{github.run_id}}'
+          SLACK_MESSAGE: 'Success Test Automation Report (Success) https://github.com/AqibGhaffar/Squibler/actions/runs/${{github.run_id}}'
           SLACK_TITLE: Cypress Web Test
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}         
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+
+      - name: Slack Notification (Failure)
+        if: failure()
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_COLOR: 'danger' # Red color for failure
+          SLACK_ICON: https://imgur.com/kdD7Ifu
+          SLACK_MESSAGE: 'Fail Test Automation Report (Failure) https://github.com/AqibGhaffar/Squibler/actions/runs/${{github.run_id}}'
+          SLACK_TITLE: Cypress Web Test
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+       
 
   # slack_notifier:
   #   runs-on: ubuntu-latest
