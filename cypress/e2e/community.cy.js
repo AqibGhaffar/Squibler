@@ -10,7 +10,7 @@ beforeEach(() => {
       })
     })
     it('Go to Community page accessible after login', () => {
-      cy.visit('//auth/login')
+      cy.visit('//aauth/login')
       cy.get('.arrows > .fak').click()
       cy.contains(' Suggest a feature').click()
       cy.location('pathname').should('eq', '/community');
