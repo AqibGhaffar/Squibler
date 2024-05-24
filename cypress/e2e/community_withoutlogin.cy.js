@@ -121,59 +121,92 @@ it.skip('should allow typing and display the search term and handle no results s
     cy.get('.community-post').first().contains('OPEN')
   });    
 
-  it.skip('should allow typing and display the search term and handle no results scenario', () => {
-    // Visit the community page
-    cy.visit('/community')
+//   it.skip('should allow typing and display the search term and handle no results scenario', () => {
+//     // Visit the community page
+//     cy.visit('/community')
   
-    // Generate a random search term
-    const search = generateRandomSearchTerm();
+//     // Generate a random search term
+//     const search = generateRandomSearchTerm();
   
-    // Type the search term into the input field
-    cy.get('#search-text')
-      .should('be.visible')
-      .clear()
-      .type(search)
-      .should('have.value', search);
+//     // Type the search term into the input field
+//     cy.get('#search-text')
+//       .should('be.visible')
+//       .clear()
+//       .type(search)
+//       .should('have.value', search);
   
-    // Check if the search results container exists
-    cy.get('.community-section-content').then($results => {
-      if ($results.length > 0) {
-        // Search results found
-        cy.wrap($results).each(($result) => {
-          cy.wrap($result).should('contain.text', search);
-          cy.log('Search results found');
-        });
+//     // Check if the search results container exists
+//     cy.get('.community-section-content').then($results => {
+//       if ($results.length > 0) {
+//         // Search results found
+//         cy.wrap($results).each(($result) => {
+//           cy.wrap($result).should('contain.text', search);
+//           cy.log('Search results found');
+//         });
+//       } else {
+//         // No search results found
+//         cy.log('No search results found for: ' + search);
+//       }
+//     });
+  
+//     // Clear the search input
+//     cy.get('#search-text').clear();
+  
+//     // Type another search term
+//     const newSearch = 'invisible';
+//     cy.get('#search-text')
+//       .type(newSearch)
+//       .should('have.value', newSearch);
+  
+//     // Check if "No Results" message is visible
+//     cy.get('#mat-tab-content-0-0').contains('No Results').should('be.visible');
+//   });
+  
+//   function generateRandomSearchTerm() {
+//     const possibleChars = 'abcdefghijklmnopqrstuvwxyz';
+//     const searchTermLength = 5;
+//     let searchTerm = '';
+//     for (let i = 0; i < searchTermLength; i++) {
+//       const randomIndex = Math.floor(Math.random() * possibleChars.length);
+//       searchTerm += possibleChars[randomIndex];
+//     }
+//     return searchTerm;
+//   } 
+ });
+
+
+
+ it('should handle both existing and non-existing search terms correctly', () => {
+  cy.visit('/community');
+
+  const testCases = [
+      { term: 'This is a test feature idea', shouldExist: true },
+      { term: 'nonexistent search term', shouldExist: false }
+  ];
+
+  testCases.forEach(testCase => {
+      // Replace '#search-text' with the actual selector for your search field
+      cy.get('#search-text').clear().type(testCase.term, { delay: 100 }).type('{enter}');
+
+      if (testCase.shouldExist) {
+          // Replace '.community-section-content' with the actual selector for the search results
+          cy.get('.community-section-content', { timeout: 10000 })
+              .contains(testCase.term)
+              .should('be.visible');
       } else {
-        // No search results found
-        cy.log('No search results found for: ' + search);
+          // Replace '#mat-tab-content-0-0' with the actual selector for the no results message
+          cy.get('#mat-tab-content-0-0', { timeout: 10000 })
+              .should('be.visible')
+              .and('contain', 'No Results.'); // Adjust the message text as necessary
       }
-    });
-  
-    // Clear the search input
-    cy.get('#search-text').clear();
-  
-    // Type another search term
-    const newSearch = 'invisible';
-    cy.get('#search-text')
-      .type(newSearch)
-      .should('have.value', newSearch);
-  
-    // Check if "No Results" message is visible
-    cy.get('#mat-tab-content-0-0').contains('No Results').should('be.visible');
+
+      // Adding a small wait time for search results to load before running the next test case
+      cy.wait(1000); // Adjust as necessary
   });
-  
-  function generateRandomSearchTerm() {
-    const possibleChars = 'abcdefghijklmnopqrstuvwxyz';
-    const searchTermLength = 5;
-    let searchTerm = '';
-    for (let i = 0; i < searchTermLength; i++) {
-      const randomIndex = Math.floor(Math.random() * possibleChars.length);
-      searchTerm += possibleChars[randomIndex];
-    }
-    return searchTerm;
-  }
-  
 });
+
+
+
 
 
 
