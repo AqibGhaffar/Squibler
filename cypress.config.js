@@ -3,6 +3,7 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
+    projectId: "n9684w",
     specPattern: "./cypress/e2e/**/*.cy.{js,jsx,ts,tsx}",
     experimentalStudio: true,
     pageLoadTimeout: 90000,
